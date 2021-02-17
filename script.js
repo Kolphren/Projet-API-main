@@ -2,7 +2,7 @@
 let cities = [
     {name: 'Paris', value: 'paris%20FR'},
     {name: 'Lyon', value: 'Lyon%20FR'},
-    {name: 'bordeaux', value: 'bordeaux%20FR'},
+    {name: 'Bordeaux', value: 'bordeaux%20FR'},
     {name: 'Lille', value: 'lille%20FR'},
     {name: 'Montpellier', value: 'montpellier%20FR'},
     {name: 'Bruxelles', value: 'brussels%20BE'},

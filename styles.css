@@ -30,6 +30,9 @@ body {
   height: 80vh;
   margin: 0.25em;
 }
+/*.none {
+    visibility: hidden;
+} */
 #infos {
   display: flex;
   justify-content: space-around;
@@ -46,6 +49,7 @@ body {
 .slogan {
   font-size: 4rem;
   font-family: 'Montserrat', sans-serif;
+  margin: 10px;
 }
 button {
   margin: 10px;
@@ -61,4 +65,33 @@ select {
 .informations {
   font-size: 1.5rem;
   font-family: 'Montserrat', sans-serif;
+}
+iframe {
+  width: 600px;
+  height: 450px;
+}
+@media screen and (min-width: 300px) and (max-width: 1000px) {
+  .header {
+    display: block;
+    height: 25vh;
+    width: auto;
+    text-align: center;
+  }
+  .slogan {
+    font-size: 2rem;
+  }
+  .content {
+    display: block;
+  }
+  .nav {
+    width: 100%;
+  }
+  #infos {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+  iframe {
+    width: 80%;
+  }
 }
