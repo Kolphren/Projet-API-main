@@ -53,6 +53,8 @@ function log(){
         displayList.appendChild(ul);
     })
 }
+// .then((response) => {
+// fetch('https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query='+value)
 
 
 document.querySelector('.nav').addEventListener('click', (el) => {
@@ -77,29 +79,29 @@ document.querySelector('.nav').addEventListener('click', (el) => {
 
 
 
-// let city;
-// fetch(' https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=paris%20FR') // requète sur l'API
-// .then((response)=>{ //le => remplace cette syntax: .then(function(response)...)
-//     return response.json(); // renvoie le résultat sous forme de .json
-//     // console.log(response);
-// })
+// // let city;
+// // fetch(' https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=paris%20FR') // requète sur l'API
+// // .then((response)=>{ //le => remplace cette syntax: .then(function(response)...)
+// //     return response.json(); // renvoie le résultat sous forme de .json
+// //     // console.log(response);
+// // })
 
-// .then((data)=>{ //ce que tu me retourne appelle le data
-//     city = data; 
-//     city.forEach(i=>{
-//         console.log(i.country);
+// // .then((data)=>{ //ce que tu me retourne appelle le data
+// //     city = data; 
+// //     city.forEach(i=>{
+// //         console.log(i.country);
 
-//     })
+// //     })
     
-// })
+// // })
 
-// document.querySelector('.character').addEventListener("click", (el) =>{
-//     el=el.target.id;
-//     let characterData = characters[el];
-//     console.log(el);
-//     // console.log(characterData);
-//     characterData.forEach(info =>{
-//         console.log(info);
+// // document.querySelector('.character').addEventListener("click", (el) =>{
+// //     el=el.target.id;
+// //     let characterData = characters[el];
+// //     console.log(el);
+// //     // console.log(characterData);
+// //     characterData.forEach(info =>{
+// //         console.log(info);
 
-//     })
-// })
+// //     })
+// // })
