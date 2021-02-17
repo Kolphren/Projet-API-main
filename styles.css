@@ -1,0 +1,64 @@
+body {
+  max-width: 100vw;
+}
+.header {
+  display: flex ;
+  justify-content: space-around;
+  align-items: center;
+  background: #C6FFDD;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
+  background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  height: 20vh;
+  margin: 0.25em;
+}
+#logo {
+  max-height: 10vh;
+}
+.content {
+  display: flex;
+}
+.nav {
+  background-color: #b3c9cc;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 30vw;
+  height: 80vh;
+  margin: 0.25em;
+}
+#infos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  width: 70vw;
+  height: 80vh;
+}
+#search {
+  margin: 10px;
+}
+.slogan {
+  font-size: 4rem;
+  font-family: 'Montserrat', sans-serif;
+}
+button {
+  margin: 10px;
+}
+label {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+select {
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.informations {
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
