@@ -1,7 +1,8 @@
 //rien
 let cities = [
+    {name: 'ville'},
     {name: 'Paris', value: 'paris%20FR'},
-    {name: 'Lyon', value: 'Lyon%20FR'},
+    {name: 'Lyon', value: 'lyon%20FR'},
     {name: 'Bordeaux', value: 'bordeaux%20FR'},
     {name: 'Lille', value: 'lille%20FR'},
     {name: 'Montpellier', value: 'montpellier%20FR'},
@@ -12,21 +13,19 @@ let cities = [
 ]
 let list = document.querySelector('#cities');
 // let select = document.createElement('select');
+
 cities.forEach(city=>{
-    
-    let option = document.createElement('option');
+    option = document.createElement('option');
     option.text = city.name;
     option.value = city.value;
     list.add(option);
     console.log(city);
 
 })
-// let location;
 // let cityChoice = document.querySelector('class');
-// let list = document.querySelector('.nav');
 
 let url;
-document.querySelector('#cities').addEventListener('click', (el) => {
+document.querySelector('#cities').addEventListener('change', (el) => {
     url = el.target.value;
     log();
 });
@@ -34,23 +33,29 @@ document.querySelector('#cities').addEventListener('click', (el) => {
 function log(){
     console.log(url);
     //mettre le fetch ici
-}
-
-fetch('https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query='+value)
-.then((response) => {
-    return response.json();
-})
-.then((data) => {
-    location = data;
-    let ul = document.querySelector('ul');
-    location.forEach(info => {
-        let li = document.querySelector('li');
-        li.innerHTML = info.name;
-        li.dataset.id = info.id;
-        ul.appendChild('li');
+    fetch('https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=10&offset=0&query='+url)
+    .then((response) => {
+        return response.json();
     })
-    list.appendChild(ul);
-})
+    .then((data) => {
+        let displayList = document.querySelector('.nav');
+        let location = data;
+        let ul = document.createElement('ul');
+        location.forEach(info => {
+            displayList.innerHTML = '';
+
+            let li = document.createElement('li');
+            console.log(info);
+            li.innerHTML = info.name;
+            li.dataset.id = info.id;
+            ul.appendChild(li);
+        })
+        displayList.appendChild(ul);
+    })
+}
+// .then((response) => {
+// fetch('https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query='+value)
+
 
 document.querySelector('.nav').addEventListener('click', (el) => {
     el = el.target;
@@ -74,29 +79,29 @@ document.querySelector('.nav').addEventListener('click', (el) => {
 
 
 
-// let city;
-// fetch(' https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=paris%20FR') // requète sur l'API
-// .then((response)=>{ //le => remplace cette syntax: .then(function(response)...)
-//     return response.json(); // renvoie le résultat sous forme de .json
-//     // console.log(response);
-// })
+// // let city;
+// // fetch(' https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=paris%20FR') // requète sur l'API
+// // .then((response)=>{ //le => remplace cette syntax: .then(function(response)...)
+// //     return response.json(); // renvoie le résultat sous forme de .json
+// //     // console.log(response);
+// // })
 
-// .then((data)=>{ //ce que tu me retourne appelle le data
-//     city = data; 
-//     city.forEach(i=>{
-//         console.log(i.country);
+// // .then((data)=>{ //ce que tu me retourne appelle le data
+// //     city = data; 
+// //     city.forEach(i=>{
+// //         console.log(i.country);
 
-//     })
+// //     })
     
-// })
+// // })
 
-// document.querySelector('.character').addEventListener("click", (el) =>{
-//     el=el.target.id;
-//     let characterData = characters[el];
-//     console.log(el);
-//     // console.log(characterData);
-//     characterData.forEach(info =>{
-//         console.log(info);
+// // document.querySelector('.character').addEventListener("click", (el) =>{
+// //     el=el.target.id;
+// //     let characterData = characters[el];
+// //     console.log(el);
+// //     // console.log(characterData);
+// //     characterData.forEach(info =>{
+// //         console.log(info);
 
-//     })
-// })
+// //     })
+// // })
