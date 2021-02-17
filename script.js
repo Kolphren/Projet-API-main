@@ -1,4 +1,5 @@
-//rien
+let list = document.querySelector('#cities');
+let button = document.querySelector('.btn');
 let cities = [
     {name: 'ville'},
     {name: 'Paris', value: 'paris%20FR'},
@@ -11,8 +12,6 @@ let cities = [
     {name: 'Berlin', value: 'berlin%20DE'},
     {name: 'Barcelone', value: 'barcelona%20ES'}
 ]
-let list = document.querySelector('#cities');
-// let select = document.createElement('select');
 
 cities.forEach(city=>{
     option = document.createElement('option');
@@ -25,15 +24,22 @@ cities.forEach(city=>{
 // let cityChoice = document.querySelector('class');
 
 let url;
-document.querySelector('#cities').addEventListener('change', (el) => {
+let page = 1;
+list.addEventListener('change', (el) => {
     url = el.target.value;
-    log();
+    page =1;
+    requestApi();
 });
 let local;
-function log(){
+button.addEventListener('click', (el)=>{
+    if(el.target.id == 'next');
+    page += 1;
+    console.log(page);
+    requestApi();
+})
+function requestApi(){
     console.log(url);
-    //mettre le fetch ici
-    fetch('https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=10&offset=0&query='+url)
+    fetch(`https://www.refugerestrooms.org/api/v1/restrooms/search?page=${page}&per_page=10&offset=0&query=${url}`)
     .then((response) => {
         return response.json();
     })
@@ -50,6 +56,15 @@ function log(){
             ul.appendChild(li);
         })
         displayList.appendChild(ul);
+        button.innerHTML='';
+
+        if (local.length >= 9 ){
+            next = document.createElement('button');
+            next.dataset.btn = data.next;
+            next.innerHTML = 'Next';
+            next.id = 'next';
+            button.appendChild(next);
+        }
     })
     return local;
 }
