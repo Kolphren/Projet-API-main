@@ -21,8 +21,10 @@ body {
 .content {
   display: flex;
 }
-.nav {
-  background-color: #b3c9cc;
+aside {
+  background: #4ECDC4;
+  background: -webkit-linear-gradient(to bottom, #556270, #4ECDC4);
+  background: linear-gradient(to bottom, #556270, #4ECDC4);
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
@@ -30,18 +32,50 @@ body {
   height: 80vh;
   margin: 0.25em;
 }
-/*.none {
-    visibility: hidden;
-} */
-#infos {
+.nav {
+  height: 70vh;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.nav ul {
+  height: 90%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #ffffff;
+  list-style: none;
+}
+.nav ul li {
+  color: white;
+  font-size: 1.5rem;
+  width: 80%;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+}
+.nav ul li:hover {
+  cursor: pointer;
+}
+.btn {
+  height: 10vh;
+}
+/* .none {
+    visibility: hidden;
+} */
+.infos-bg {
+  background-image: url('street.jpg');
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   width: 70vw;
   height: 80vh;
+  margin: 0.25em;
 }
 #search {
   margin: 10px;
@@ -63,12 +97,21 @@ select {
   font-family: 'Montserrat', sans-serif;
 }
 .informations {
-  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black w/opacity/see-through */
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.7rem;
   font-family: 'Montserrat', sans-serif;
+  border: 2px #ffffff solid;
+  padding: 2rem;
+  border-radius: 10px;
 }
 iframe {
   width: 600px;
   height: 450px;
+  margin: 2rem;
 }
 @media screen and (min-width: 300px) and (max-width: 1000px) {
   .header {
@@ -83,7 +126,7 @@ iframe {
   .content {
     display: block;
   }
-  .nav {
+  aside {
     width: 100%;
   }
   #infos {
@@ -91,7 +134,13 @@ iframe {
     text-align: center;
     width: 100%;
   }
+  .informations {
+    padding-top: 2rem;
+  }
   iframe {
     width: 80%;
+  }
+  .infos-bg {
+    width: 100%;
   }
 }
