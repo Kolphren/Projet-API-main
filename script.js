@@ -21,9 +21,9 @@ cities.forEach(city=>{
     console.log(city);
 
 })
-let location;
-let cityChoice = document.querySelector('class');
-let list = document.querySelector('.nav');
+// let location;
+// let cityChoice = document.querySelector('class');
+// let list = document.querySelector('.nav');
 
 let url;
 document.querySelector('#cities').addEventListener('click', (el) => {
