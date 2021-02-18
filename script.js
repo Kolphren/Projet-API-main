@@ -23,7 +23,7 @@ cities.forEach(city=>{ // cré le menu déroulant
     option.text = city.name;
     option.value = city.value;
     list.add(option);
-    console.log(city);
+   // console.log(city);
 
 })
 
@@ -51,7 +51,7 @@ button.addEventListener('click', (el)=>{ //charge
 })
 
 function requestApi(){
-    console.log(url);
+    //console.log(url);
     fetch(`https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=${url}`)
     .then((response) => {
         return response.json();
