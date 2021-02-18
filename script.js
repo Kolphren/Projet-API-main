@@ -129,7 +129,7 @@ document.querySelector('.nav').addEventListener('click', (el) => {
         document.querySelector("#country").innerHTML = result.country;
         document.querySelector("#accessible").innerHTML = accessible;
         document.querySelector("#unisex").innerHTML = unisex;
-        // document.querySelector("#comment").innerHTML = result.comment; //ajouter comment dans html
+        document.querySelector("#comment").innerHTML = result.comment; 
         infos.classList.remove('none');
     }
     var container = L.DomUtil.get('mapid');
@@ -158,34 +158,3 @@ document.querySelector('.nav').addEventListener('click', (el) => {
         })
         .addTo(mymap);
 })
-
-
-
-
-
-// let city;
-// fetch(' https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=paris%20FR') // requète sur l'API
-// .then((response)=>{ //le => remplace cette syntax: .then(function(response)...)
-//     return response.json(); // renvoie le résultat sous forme de .json
-//     // console.log(response);
-// })
-
-// .then((data)=>{ //ce que tu me retourne appelle le data
-//     city = data; 
-//     city.forEach(i=>{
-//         console.log(i.country);
-
-//     })
-    
-// })
-
-// document.querySelector('.character').addEventListener("click", (el) =>{
-//     el=el.target.id;
-//     let characterData = characters[el];
-//     console.log(el);
-//     // console.log(characterData);
-//     characterData.forEach(info =>{
-//         console.log(info);
-
-//     })
-// })
