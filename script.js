@@ -130,7 +130,7 @@ document.querySelector('.nav').addEventListener('click', (el) => {
         document.querySelector("#accessible").innerHTML = accessible;
         document.querySelector("#unisex").innerHTML = unisex;
         // document.querySelector("#comment").innerHTML = result.comment; //ajouter comment dans html
-        //info.classList.remove('none');
+        infos.classList.remove('none');
     }
     var container = L.DomUtil.get('mapid');
     if(container != null){

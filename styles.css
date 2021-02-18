@@ -77,9 +77,9 @@ aside {
 #next:hover {
   cursor: pointer;
 }
-/*.none {
-    visibility: hidden;
-}*/
+.none {
+  display: none;
+}
 .infos-bg {
   background-image: url('street.jpg');
   background-size: cover;
