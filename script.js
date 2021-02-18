@@ -20,7 +20,7 @@ cities.forEach(city=>{
     option.value = city.value;
     list.add(option);
     console.log(city);
-  
+
 })
 // let cityChoice = document.querySelector('class');
 
