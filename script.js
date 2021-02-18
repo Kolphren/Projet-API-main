@@ -128,20 +128,24 @@ document.querySelector('.nav').addEventListener('click', (el) => {
 
     let lon = result.longitude;
     let lat = result.latitude;
+    let wcIcone = L.icon ({
+        iconUrl: 'icon3.png',
+        iconSize: [40, 55],
+        iconAnchor: [38, 52]
+    });
 
     let mymap = L.map('mapid').setView([lat, lon], 13);
-    L.marker([lat, lon]).addTo(mymap);
+    L.marker([lat, lon], {icon: wcIcone}).addTo(mymap);
     
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', { 
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'your.mapbox.access.token'
+        accessToken: 'pk.eyJ1Ijoia29scGhyZW4iLCJhIjoiY2tsYW8zY3R5MWJrNTJ3bnB0b3ZocGRjNCJ9.XUJdmNxTXIc590jlTsYlQw'
         })
         .addTo(mymap);
-    //console.log(local);
 })
 
 
