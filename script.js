@@ -1,5 +1,6 @@
 let list = document.querySelector('#cities');
 let button = document.querySelector('.btn');
+let local;
 let cities = [
     {name: 'ville'},
     {name: 'Paris', value: 'paris%20FR'},
@@ -30,12 +31,18 @@ list.addEventListener('change', (el) => {
     page =1;
     requestApi();
 });
-let local;
 button.addEventListener('click', (el)=>{
-    if(el.target.id == 'next');
-    page += 1;
-    console.log(page);
-    requestApi();
+
+    if(el.target.id == 'next'){
+        page += 1;
+        console.log(page);
+        requestApi();
+    }
+    if(el.target.id == 'previous'){
+        page -= 1;
+        console.log(page);
+        requestApi();
+    }
 })
 function requestApi(){
     console.log(url);
@@ -56,33 +63,62 @@ function requestApi(){
             ul.appendChild(li);
         })
         displayList.appendChild(ul);
+        
         button.innerHTML='';
-
-        if (local.length >= 9 ){
-            next = document.createElement('button');
-            next.dataset.btn = data.next;
-            next.innerHTML = 'Next';
-            next.id = 'next';
-            button.appendChild(next);
+        if(page >= 2){
+            prev();
+        }   
+        if (local.length >= 9){
+            next();
         }
     })
     return local;
 }
+function next(){
+    let next = document.createElement('button');
+    next.innerHTML = 'Next';
+    next.id = 'next';
+    button.appendChild(next);
+}
+function prev(){
+    let previous = document.createElement('button')
+    previous.innerHTML = 'Previous';
+    previous.id = "previous"
+    button.appendChild(previous);
+}
+
+
 
 
 document.querySelector('.nav').addEventListener('click', (el) => {
     el = el.target.dataset.id;
     console.log(el);
+    let accessible;
     let result;
+    let unisex;
     if (el) {
         result = local.find (id => id.id == el);
+        if (result.accessible == true){
+             accessible = "oui";
+    
+        }else if(result.accessible == false){
+             accessible = "non";
+        }
+        
+        if (result.unisex == true){
+             unisex = "oui";
+    
+        }else if(result.unisex == false){
+             unisex = "non";
+        }
         console.log(result);
         document.querySelector("#name").innerHTML = result.name;
         document.querySelector("#city").innerHTML = result.city;
         document.querySelector("#street").innerHTML = result.street;
         document.querySelector("#country").innerHTML = result.country;
-        document.querySelector("#accessible").innerHTML = result.accessible;
-        document.querySelector("#unisex").innerHTML = result.unisex;
+        document.querySelector("#accessible").innerHTML = accessible;
+        document.querySelector("#unisex").innerHTML = unisex;
+        // document.querySelector("#comment").innerHTML = result.comment; //ajouter comment dans html
         //info.classList.remove('none');
     }
     var container = L.DomUtil.get('mapid');
@@ -94,7 +130,7 @@ document.querySelector('.nav').addEventListener('click', (el) => {
     let lat = result.latitude;
 
     let mymap = L.map('mapid').setView([lat, lon], 13);
-    let marker = L.marker([lat, lon]).addTo(mymap);
+    L.marker([lat, lon]).addTo(mymap);
     
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
