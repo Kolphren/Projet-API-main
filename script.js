@@ -18,8 +18,8 @@ let page = 0;
 let minItem = 0;
 let maxItem = 10;
 
-cities.forEach(city=>{
-    option = document.createElement('option');
+cities.forEach(city=>{ // cré le menu déroulant
+    let option = document.createElement('option');
     option.text = city.name;
     option.value = city.value;
     list.add(option);
@@ -27,13 +27,13 @@ cities.forEach(city=>{
 
 })
 
-list.addEventListener('change', (el) => {
+list.addEventListener('change', (el) => { //lance la requête API
     url = el.target.value;
     page =1;
     requestApi();
 });
 
-button.addEventListener('click', (el)=>{
+button.addEventListener('click', (el)=>{ //charge
     if(el.target.id == 'next'){
         page += 1;
         minItem += 10;
@@ -103,7 +103,7 @@ function prev(){
 
 document.querySelector('.nav').addEventListener('click', (el) => {
     el = el.target.dataset.id;
-    console.log(el);
+    // console.log(el);
     let accessible;
     let result;
     let unisex;
@@ -129,7 +129,7 @@ document.querySelector('.nav').addEventListener('click', (el) => {
         document.querySelector("#country").innerHTML = result.country;
         document.querySelector("#accessible").innerHTML = accessible;
         document.querySelector("#unisex").innerHTML = unisex;
-        // document.querySelector("#comment").innerHTML = result.comment; //ajouter comment dans html
+        document.querySelector("#comment").innerHTML = result.comment; 
         infos.classList.remove('none');
     }
     var container = L.DomUtil.get('mapid');
@@ -158,34 +158,3 @@ document.querySelector('.nav').addEventListener('click', (el) => {
         })
         .addTo(mymap);
 })
-
-
-
-
-
-// let city;
-// fetch(' https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=paris%20FR') // requète sur l'API
-// .then((response)=>{ //le => remplace cette syntax: .then(function(response)...)
-//     return response.json(); // renvoie le résultat sous forme de .json
-//     // console.log(response);
-// })
-
-// .then((data)=>{ //ce que tu me retourne appelle le data
-//     city = data; 
-//     city.forEach(i=>{
-//         console.log(i.country);
-
-//     })
-    
-// })
-
-// document.querySelector('.character').addEventListener("click", (el) =>{
-//     el=el.target.id;
-//     let characterData = characters[el];
-//     console.log(el);
-//     // console.log(characterData);
-//     characterData.forEach(info =>{
-//         console.log(info);
-
-//     })
-// })
