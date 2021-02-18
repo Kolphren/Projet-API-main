@@ -18,8 +18,8 @@ let page = 0;
 let minItem = 0;
 let maxItem = 10;
 
-cities.forEach(city=>{
-    option = document.createElement('option');
+cities.forEach(city=>{ // cré le menu déroulant
+    let option = document.createElement('option');
     option.text = city.name;
     option.value = city.value;
     list.add(option);
@@ -27,13 +27,13 @@ cities.forEach(city=>{
 
 })
 
-list.addEventListener('change', (el) => {
+list.addEventListener('change', (el) => { //lance la requête API
     url = el.target.value;
     page =1;
     requestApi();
 });
 
-button.addEventListener('click', (el)=>{
+button.addEventListener('click', (el)=>{ //charge
     if(el.target.id == 'next'){
         page += 1;
         minItem += 10;
@@ -103,7 +103,7 @@ function prev(){
 
 document.querySelector('.nav').addEventListener('click', (el) => {
     el = el.target.dataset.id;
-    console.log(el);
+    // console.log(el);
     let accessible;
     let result;
     let unisex;
