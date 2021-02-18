@@ -13,6 +13,10 @@ let cities = [
     {name: 'Berlin', value: 'berlin%20DE'},
     {name: 'Barcelone', value: 'barcelona%20ES'}
 ]
+let url;
+let page = 0;
+let minItem = 0;
+let maxItem = 10;
 
 cities.forEach(city=>{
     option = document.createElement('option');
@@ -22,64 +26,71 @@ cities.forEach(city=>{
     console.log(city);
 
 })
-// let cityChoice = document.querySelector('class');
 
-let url;
-let page = 1;
 list.addEventListener('change', (el) => {
     url = el.target.value;
     page =1;
     requestApi();
 });
-button.addEventListener('click', (el)=>{
 
+button.addEventListener('click', (el)=>{
     if(el.target.id == 'next'){
         page += 1;
+        minItem += 10;
+        maxItem += 10;
         console.log(page);
-        requestApi();
+        switchPage();
     }
     if(el.target.id == 'previous'){
         page -= 1;
+        minItem -= 10;
+        maxItem -= 10;
         console.log(page);
-        requestApi();
+        switchPage();
     }
 })
+
 function requestApi(){
     console.log(url);
-    fetch(`https://www.refugerestrooms.org/api/v1/restrooms/search?page=${page}&per_page=10&offset=0&query=${url}`)
+    fetch(`https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=${url}`)
     .then((response) => {
         return response.json();
     })
     .then((data) => {
-        let displayList = document.querySelector('.nav');
         local = data;
-        let ul = document.createElement('ul');
-        local.forEach(info => {
-            displayList.innerHTML = '';
-            let li = document.createElement('li');
-            console.log(info);
-            li.innerHTML = info.name;
-            li.dataset.id = info.id;
-            ul.appendChild(li);
-        })
-        displayList.appendChild(ul);
-        
-        button.innerHTML='';
-        if(page >= 2){
-            prev();
-        }   
-        if (local.length >= 9){
-            next();
-        }
+        // console.log(local);
+        switchPage();
     })
-    return local;
 }
+
+function switchPage(){
+    let displayList = document.querySelector('.nav');
+    let ul = document.createElement('ul');
+    item = local.slice(minItem, maxItem)
+        item.forEach(info => {
+        displayList.innerHTML = '';
+        let li = document.createElement('li');
+        li.innerHTML = info.name;
+        li.dataset.id = info.id;
+        ul.appendChild(li);
+    })
+    displayList.appendChild(ul);
+    button.innerHTML='';
+    if(page >= 2){
+        prev();
+    }   
+    if (item.length >= 9){
+        next();
+    }
+}
+
 function next(){
     let next = document.createElement('button');
     next.innerHTML = 'Next';
     next.id = 'next';
     button.appendChild(next);
 }
+
 function prev(){
     let previous = document.createElement('button')
     previous.innerHTML = 'Previous';
