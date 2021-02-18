@@ -140,7 +140,7 @@ document.querySelector('.nav').addEventListener('click', (el) => {
     let lon = result.longitude;
     let lat = result.latitude;
     let wcIcone = L.icon ({
-        iconUrl: 'icon3.png',
+        iconUrl: './img/icon3.png',
         iconSize: [40, 55],
         iconAnchor: [38, 52]
     });
