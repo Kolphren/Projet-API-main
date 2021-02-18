@@ -6,7 +6,6 @@ body {
   justify-content: space-around;
   align-items: center;
   background: #C6FFDD;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
   background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
   -webkit-border-radius: 10px;
@@ -33,17 +32,19 @@ aside {
   margin: 0.25em;
 }
 .nav {
-  height: 70vh;
+  height: 75vh;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
 }
 .nav ul {
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .nav ul li {
   color: white;
@@ -51,6 +52,7 @@ aside {
   width: 80%;
   text-align: center;
   padding: 10px;
+  margin: 5px;
   border: 2px solid #ffffff;
   border-radius: 5px;
 }
@@ -58,24 +60,55 @@ aside {
   cursor: pointer;
 }
 .btn {
-  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
 }
-/* .none {
+#previous,
+#next {
+  height: 2rem;
+  width: 5rem;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 3px;
+  border: none;
+}
+#previous:hover,
+#next:hover {
+  cursor: pointer;
+}
+/*.none {
     visibility: hidden;
-} */
+}*/
 .infos-bg {
   background-image: url('street.jpg');
+  background-size: cover;
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   width: 70vw;
   height: 80vh;
   margin: 0.25em;
+}
+.infos {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black w/opacity/see-through */
+  border: 2px #ffffff solid;
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+.p-infos {
+  display: flex;
+}
+.p-infos p {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 #search {
   margin: 10px;
@@ -97,16 +130,23 @@ select {
   font-family: 'Montserrat', sans-serif;
 }
 .informations {
-  background-color: rgba(0, 0, 0, 0.5);
-  /* Black w/opacity/see-through */
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: #ffffff;
   font-weight: bold;
-  font-size: 1.7rem;
+  font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
-  border: 2px #ffffff solid;
   padding: 2rem;
   border-radius: 10px;
+}
+#mapid {
+  /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+  height: 450px;
+  width: 600px;
+  margin-top: 2rem;
+  border-radius: 5px;
 }
 @media screen and (min-width: 300px) and (max-width: 1000px) {
   .header {
@@ -132,10 +172,12 @@ select {
   .informations {
     padding-top: 2rem;
   }
-  #mapid {
-    width: 80%;
-  }
   .infos-bg {
     width: 100%;
+  }
+  #mapid {
+    /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 500px;
+    width: 400px;
   }
 }
