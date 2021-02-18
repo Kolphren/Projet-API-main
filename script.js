@@ -13,6 +13,10 @@ let cities = [
     {name: 'Berlin', value: 'berlin%20DE'},
     {name: 'Barcelone', value: 'barcelona%20ES'}
 ]
+let url;
+let page = 0;
+let minItem = 0;
+let maxItem = 10;
 
 cities.forEach(city=>{
     option = document.createElement('option');
@@ -23,17 +27,12 @@ cities.forEach(city=>{
   
 })
 
-
-let url;
-let page = 0;
-let minItem = 0;
-let maxItem = 10;
-
 list.addEventListener('change', (el) => {
     url = el.target.value;
     page =1;
     requestApi();
 });
+
 button.addEventListener('click', (el)=>{
     if(el.target.id == 'next'){
         page += 1;
@@ -63,6 +62,7 @@ function requestApi(){
         switchPage();
     })
 }
+
 function switchPage(){
     let displayList = document.querySelector('.nav');
     let ul = document.createElement('ul');
@@ -83,12 +83,14 @@ function switchPage(){
         next();
     }
 }
+
 function next(){
     let next = document.createElement('button');
     next.innerHTML = 'Next';
     next.id = 'next';
     button.appendChild(next);
 }
+
 function prev(){
     let previous = document.createElement('button')
     previous.innerHTML = 'Previous';
