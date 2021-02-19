@@ -40,6 +40,9 @@ aside {
   overflow: auto;
   scrollbar-width: none;
 }
+aside::-webkit-scrollbar {
+  display: none;
+}
 .nav {
   height: 75vh;
   font-family: 'Montserrat', sans-serif;
