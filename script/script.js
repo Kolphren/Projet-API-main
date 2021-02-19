@@ -18,7 +18,9 @@ let page = 0;
 let minItem = 0;
 let maxItem = 10;
 
-cities.forEach(city=>{ // cré le menu déroulant
+// ########### cré le menu déroulant ###########
+
+cities.forEach(city=>{ 
     let option = document.createElement('option');
     option.text = city.name;
     option.value = city.value;
@@ -27,13 +29,17 @@ cities.forEach(city=>{ // cré le menu déroulant
 
 })
 
-list.addEventListener('change', (el) => { //lance la requête API
+// ########### lance la requête API ###########
+
+list.addEventListener('change', (el) => { 
     url = el.target.value;
     page =1;
     requestApi();
 });
 
-button.addEventListener('click', (el)=>{ //charge
+// ########### charge les 10 item suivant ###########
+
+button.addEventListener('click', (el)=>{ 
     if(el.target.id == 'next'){
         page += 1;
         minItem += 10;
@@ -50,7 +56,9 @@ button.addEventListener('click', (el)=>{ //charge
     }
 })
 
-function requestApi(){
+// ########### requête l'API ###########
+
+function requestApi(){ 
     //console.log(url);
     fetch(`https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=${url}`)
     .then((response) => {
@@ -63,7 +71,9 @@ function requestApi(){
     })
 }
 
-function switchPage(){
+// ########### changement de page ###########
+
+function switchPage(){ 
     let displayList = document.querySelector('.nav');
     let ul = document.createElement('ul');
     item = local.slice(minItem, maxItem)
@@ -84,14 +94,18 @@ function switchPage(){
     }
 }
 
-function next(){
+// ########### création de bouton next ########### 
+
+function next(){ 
     let next = document.createElement('button');
     next.innerHTML = 'Next';
     next.id = 'next';
     button.appendChild(next);
 }
 
-function prev(){
+// ########### création de bouton previous ###########
+
+function prev(){ 
     let previous = document.createElement('button')
     previous.innerHTML = 'Previous';
     previous.id = "previous"
@@ -100,8 +114,9 @@ function prev(){
 
 
 
+// ########### affichage info toilettes et gestion de la map ###########
 
-document.querySelector('.nav').addEventListener('click', (el) => {
+document.querySelector('.nav').addEventListener('click', (el) => { 
     el = el.target.dataset.id;
     // console.log(el);
     let accessible;
@@ -132,6 +147,9 @@ document.querySelector('.nav').addEventListener('click', (el) => {
         document.querySelector("#comment").innerHTML = result.comment; 
         infos.classList.remove('none');
     }
+
+    // ########### gestion de la map ###########
+    
     var container = L.DomUtil.get('mapid');
     if(container != null){
     container._leaflet_id = null;
