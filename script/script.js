@@ -60,6 +60,8 @@ button.addEventListener('click', (el)=>{
 
 function requestApi(){ 
     //console.log(url);
+    minItem = 0;
+    maxItem = 10;
     fetch(`https://www.refugerestrooms.org/api/v1/restrooms/search?page=1&per_page=100&offset=0&query=${url}`)
     .then((response) => {
         return response.json();
@@ -69,6 +71,7 @@ function requestApi(){
         // console.log(local);
         switchPage();
     })
+
 }
 
 // ########### changement de page ###########
@@ -77,8 +80,8 @@ function switchPage(){
     let displayList = document.querySelector('.nav');
     let ul = document.createElement('ul');
     item = local.slice(minItem, maxItem)
+    displayList.innerHTML = '';
         item.forEach(info => {
-        displayList.innerHTML = '';
         let li = document.createElement('li');
         li.innerHTML = info.name;
         li.dataset.id = info.id;

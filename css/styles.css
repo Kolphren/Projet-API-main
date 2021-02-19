@@ -42,10 +42,15 @@ aside {
 }
 aside::-webkit-scrollbar {
   display: none;
+  scrollbar-width: none;
 }
 .nav {
   height: 75vh;
   font-family: 'Montserrat', sans-serif;
+}
+.nav ul::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
 }
 .nav ul {
   height: 100%;
