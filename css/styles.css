@@ -112,7 +112,7 @@ aside::-webkit-scrollbar {
   align-items: center;
   max-height: 45vh;
   max-width: 80%;
-  font-size: 2vh;
+  font-size: 1.5vh;
   background-color: rgba(0, 0, 0, 0.5);
   /* Black w/opacity/see-through */
   border: 2px #ffffff solid;
