@@ -91,7 +91,7 @@ aside {
   display: none;
 }
 .infos-bg {
-  background-image: url('img/street.jpg');
+  background-image: url('../img/street.jpg');
   background-size: cover;
   width: 100%;
   -webkit-border-radius: 10px;
